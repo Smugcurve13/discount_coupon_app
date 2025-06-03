@@ -14,6 +14,10 @@ headers = {
     "Content-Type": "application/json"
 }
 
+@app.route("/", methods=["GET"])
+def index():   
+    return jsonify({"message": "Welcome to the Shopify API integration!"})
+
 @app.route("/collections", methods=["GET"])
 def get_collections():
     # You can also try /smart_collections.json
@@ -88,4 +92,4 @@ def create_discount():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
