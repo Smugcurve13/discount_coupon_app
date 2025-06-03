@@ -41,7 +41,7 @@ def get_collections():
 @app.route("/create_discount", methods=["POST"])
 def create_discount():
     # Replace with your collection ID (can be fetched via API)
-    target_collection_id = "1234567890"  # TODO: Replace with actual
+    target_collection_id = os.getenv("COLLECTION_ID")  # TODO: Replace with actual
     discount_title = "HOLIDAYEDIT2025"
 
     data = {
@@ -50,14 +50,13 @@ def create_discount():
             "target_type": "line_item",
             "target_selection": "entitled",
             "allocation_method": "across",
-            "value_type": "fixed_price",
-            "value": "-4999.0",
+            "value_type": "fixed_amount",         # ✅ Use fixed amount
+            "value": "-1000.0",                   # ✅ Discount of ₹1000
             "customer_selection": "all",
             "starts_at": "2025-06-01T00:00:00Z",
             "entitled_collection_ids": [target_collection_id],
             "prerequisite_quantity_range": {
-                "greater_than_or_equal_to": 2,
-                "less_than_or_equal_to": 2
+                "greater_than_or_equal_to": 2
             }
         }
     }
