@@ -36,8 +36,6 @@ def get_collections():
     else:
         return jsonify({"error": "Failed to fetch collections", "details": response.json()}), 400
 
-
-
 @app.route("/create_discount", methods=["POST"])
 def create_discount():
     # Replace with your collection ID (can be fetched via API)
